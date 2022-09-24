@@ -44,51 +44,48 @@
     <link href="signin.css" rel="stylesheet">
   </head>
 
-
-
-
+  {% if error %}
+  <br>
+  <h6 class='display-6' align='center'>{{error}}</h6>
+  <br>
+  <br>
+  {% endif %}
 <body>
 
+<div class="container">
+<div class="container">
+  <main class="form-signin">
+    <form action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+      <br><br>
+      <br><br><br><br>
+      <br><br>
+      <br><br><br><br>
+      <h1 class="h3 mb-3 fw-normal" align='center'>Sign In</h1>
+      <br>
 
-  <div class='container'>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">
-          Python Hunt
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class = 'navbar-nav ms-auto'>
-            {% if user.is_authenticated %}
-            <a class='nav-item nav-link' href="JavaScript:{document.getElementById('logout').submit()}" name='logoutbtn'>Logout</a>
-            <form id='logout' method='POST' action="{% url 'logout' %}">
-              {% csrf_token %}
-              <input type='hidden' />
-            </form>
-            {% else %}
-            <a class='nav-item nav-link' href="{% url 'signup' %}">Sign up</a>
-            <a class='nav-item nav-link' href="{% url 'login' %}">Log in</a>
-            {% endif %}
-            </div>
-        </div>
+      <div class="form-floating">
+        <input type="email" class="form-control" name='username' placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+        <br>
       </div>
-    </nav>
-  </div>
+
+      <div class="form-floating">
+        <input type="password" class="form-control" name="password" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
 
   <br>
-  <br><br><br><br><br><br>
-  <br><br><br><br><br><br><br>
-  <br><br><br>
+  <br>
 
-<h1 align='center'>Time Sheet Website</<h1>
-  <h6 align='center'>To power your productivity</h6>
-  <p align='center'><a class="w-10 btn btn-lg btn-primary" type="submit" align='center' href='{% url "signup" %}'>Sign in</a>
-    <a class="w-10 btn btn-lg btn-primary" type="submit" align='center' href='{% url "login" %}'>Log in</a>
-  </p>
-  <p align='center'></p>
+      <p align='center'><input class='btn btn-primary' type='submit' value='Log in!' name='submitbtn'></p>
+      <p class="mt-5 mb-3 text-muted">&copy; Neural Net Genesis 2022</p>
+    </form>
+  </main>
 
+</div>
+
+<div>
 
 
 </body>
